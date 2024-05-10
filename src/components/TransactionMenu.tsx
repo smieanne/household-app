@@ -18,6 +18,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Transaction } from "../types";
 import { formatCurrency } from "../utils/formatting";
 import IconComponents from "./common/InconComponents";
+import { useAppContext } from "../context/AppContext";
 
 interface TransactionMenuProps {
   dailyTransactions: Transaction[];
@@ -26,7 +27,7 @@ interface TransactionMenuProps {
   onSelectTransaction: (trnsaction: Transaction) => void;
   open: boolean;
   onClose: () => void;
-  isMobile: boolean;
+  // isMobile: boolean;
 }
 const TransactionMenu = ({
   dailyTransactions,
@@ -35,8 +36,10 @@ const TransactionMenu = ({
   onSelectTransaction,
   open,
   onClose,
-  isMobile,
-}: TransactionMenuProps) => {
+}: // isMobile,
+TransactionMenuProps) => {
+  const { isMobile } = useAppContext();
+
   const menuDrawerWidth = 320;
   return (
     <Drawer

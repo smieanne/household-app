@@ -24,6 +24,8 @@ import { Grid } from "@mui/material";
 import { formatCurrency } from "../utils/formatting";
 import IconComponents from "./common/InconComponents";
 import { compareDesc, parseISO } from "date-fns";
+import { useAppContext } from "../context/AppContext";
+import useMonthlyTransactions from "../hooks/useMonthlyTransactions";
 
 interface TransactionTableHeadProps {
   numSelected: number;
@@ -146,16 +148,19 @@ function FinancialItem({ title, value, color }: FinacialItemProps) {
   );
 }
 
-interface TransactionTableProps {
-  monthlyTransactions: Transaction[];
-  onDeleteTransaction: (ids: string | readonly string[]) => Promise<void>;
-}
+// interface TransactionTableProps {
+//   monthlyTransactions: Transaction[];
+//   onDeleteTransaction: (ids: string | readonly string[]) => Promise<void>;
+// }
 
 //本体
-export default function TransactionTable({
-  monthlyTransactions,
-  onDeleteTransaction,
-}: TransactionTableProps) {
+export default function TransactionTable() {
+  //   {
+  //   monthlyTransactions,
+  //   onDeleteTransaction,
+  // }: TransactionTableProps
+  const { onDeleteTransaction } = useAppContext();
+  const monthlyTransactions = useMonthlyTransactions();
   const theme = useTheme();
 
   const [selected, setSelected] = React.useState<readonly string[]>([]);

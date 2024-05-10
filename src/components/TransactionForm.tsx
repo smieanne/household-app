@@ -27,9 +27,10 @@ import TrainIcon from "@mui/icons-material/Train";
 import WorkIcon from "@mui/icons-material/Work";
 import SavingsIcon from "@mui/icons-material/Savings";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Schema, transactionSchema } from "../validations/schema";
+import { AppContext, useAppContext } from "../context/AppContext";
 interface TransactionFormProps {
   onCloseForm: () => void;
   isEntryDrawerOpen: boolean;
@@ -38,17 +39,17 @@ interface TransactionFormProps {
   setSelectedTransaction: React.Dispatch<
     React.SetStateAction<Transaction | null>
   >;
-  onSaveTransaction: (transaction: Schema) => Promise<void>;
-  onDeleteTransaction: (
-    transactionIds: string | readonly string[]
-  ) => Promise<void>;
-  onUpdateTransaction: (
-    transaction: Schema,
-    transactionId: string
-  ) => Promise<void>;
+  // onSaveTransaction: (transaction: Schema) => Promise<void>;
+  // onDeleteTransaction: (
+  //   transactionIds: string | readonly string[]
+  // ) => Promise<void>;
+  // onUpdateTransaction: (
+  //   transaction: Schema,
+  //   transactionId: string
+  // ) => Promise<void>;
   isDialogOpen: boolean;
   setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isMobile: boolean;
+  // isMobile: boolean;
 }
 type IncomeExpense = "income" | "expense";
 interface CategoryItem {
@@ -60,14 +61,20 @@ const TransactionForm = ({
   isEntryDrawerOpen,
   currentDay,
   selectedTransaction,
-  onSaveTransaction,
-  onDeleteTransaction,
-  onUpdateTransaction,
+  // onSaveTransaction,
+  // onDeleteTransaction,
+  // onUpdateTransaction,
   isDialogOpen,
   setSelectedTransaction,
   setIsDialogOpen,
-  isMobile,
-}: TransactionFormProps) => {
+}: // isMobile,
+TransactionFormProps) => {
+  const {
+    isMobile,
+    onSaveTransaction,
+    onDeleteTransaction,
+    onUpdateTransaction,
+  } = useAppContext();
   const formWidth = 320;
   // 支出用カテゴリ
   const expenseCategories: CategoryItem[] = [

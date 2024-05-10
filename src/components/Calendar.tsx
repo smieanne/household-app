@@ -10,23 +10,28 @@ import { formatCurrency } from "../utils/formatting";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import { useTheme } from "@mui/material";
 import { isSameMonth } from "date-fns";
+import useMonthlyTransactions from "../hooks/useMonthlyTransactions";
+import { useAppContext } from "../context/AppContext";
 
 interface CalendarProps {
-  monthlyTransactions: Transaction[];
+  // monthlyTransactions: Transaction[];
   setCurrentDay: React.Dispatch<React.SetStateAction<string>>;
   currentDay: string;
-  setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>;
+  // setCurrentMonth: React.Dispatch<React.SetStateAction<Date>>;
   today: string;
   onDateClick: (dateInfo: DateClickArg) => void;
 }
 const Calendar = ({
-  monthlyTransactions,
+  // monthlyTransactions,
   setCurrentDay,
   currentDay,
-  setCurrentMonth,
+  // setCurrentMonth,
   today,
   onDateClick,
 }: CalendarProps) => {
+  const monthlyTransactions = useMonthlyTransactions();
+  const { setCurrentMonth } = useAppContext();
+
   const theme = useTheme();
   // 1.各日付の収支を計算する関数（呼び出し）🎃
   const dailyBalances = calculateDailyBalances(monthlyTransactions);
