@@ -43,9 +43,9 @@ export const theme = createTheme({
   //収入用の色を定義
   palette: {
     incomeColor: {
-      main: blue[500],
-      light: blue[100],
-      dark: blue[700],
+      main: green[500],
+      light: green[100],
+      dark: green[700],
     },
 
     //支出用の色を定義
@@ -58,9 +58,9 @@ export const theme = createTheme({
     //残高用の色を定義
 
     balanceColor: {
-      main: green[500],
-      light: green[100],
-      dark: green[700],
+      main: blue[500],
+      light: blue[100],
+      dark: blue[700],
     },
     incomeCategoryColor: {
       給与: lightBlue[600],

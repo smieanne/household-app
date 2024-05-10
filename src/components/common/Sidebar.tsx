@@ -49,7 +49,7 @@ const Sidebar = ({
   };
 
   const activeLinkStyle: CSSProperties = {
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
   };
 
   const drawer = (

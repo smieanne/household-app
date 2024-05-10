@@ -13,7 +13,7 @@
 }
 
 .fc-col-header-cell {
-  background-color: #42a5f5;
+  background-color: #009ff5;
   color: white; /* ヘッダーのテキスト色を白に設定 */
 }
 
@@ -30,7 +30,7 @@
 }
 
 #event-income {
-  color: #2196f3;
+  color: #4fae29;
 }
 
 #event-expense {
@@ -38,5 +38,5 @@
 }
 
 #event-balance {
-  color: #4caf50;
+  color: #296dc0;
 }
